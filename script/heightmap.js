@@ -1,5 +1,5 @@
 const Heightmap = {
-	seed: Math.random(),
+	seed: null,
 
 	random() {
 		this.seed = (this.seed * 9301 + 49297) % 233280;
@@ -14,7 +14,9 @@ const Heightmap = {
 		return Math.min(1, Math.max(0, n));
 	},
 
-	create(iterations, roughness) {
+	create(iterations, roughness, seed) {
+		this.seed = !isNaN(Number(seed)) ? Number(seed) : Math.random();
+
 		const size = Math.pow(2, iterations) + 1;
 		const ubound = size - 1;
 		const map = [];
