@@ -6,11 +6,27 @@ body {
 	margin: 25px 0 0 50px;
 }
 
-label {
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset:not(:last-child) {
+	border-bottom: 1px solid #c9c9c9;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+
+legend {
 	color: #333;
-	display: inline-block;
 	font-weight: bold;
 	margin-bottom: 10px;
+	padding: 0;
+}
+
+label {
+	cursor: pointer;
 }
 
 input, select {
@@ -20,6 +36,13 @@ input, select {
 	width: 100%;
 }
 
+input[type="checkbox"] {
+	cursor: pointer;
+	margin: 0;
+	vertical-align: bottom;
+	width: initial;
+}
+
 button {
 	background-color: #e9e9e9;
 	border: 1px solid #c9c9c9;
@@ -27,10 +50,9 @@ button {
 	padding: 4px 6px;
 }
 
-.button-wrap {
-	display: flex;
-	justify-content: flex-end;
+.input-related {
 	margin-top: 10px;
+	text-align: right;
 }
 
 #controls {
@@ -38,10 +60,4 @@ button {
 	margin-right: 20px;
 	padding-right: 20px;
 	width: 160px;
-}
-
-#controls > div:not(:last-child) {
-	border-bottom: 1px solid #c9c9c9;
-	margin-bottom: 15px;
-	padding-bottom: 15px;
 }

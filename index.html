@@ -8,46 +8,41 @@
 	</head>
 	<body>
 		<div id="controls">
-			<div>
-				<label for="seed">Seed</label>
+			<fieldset>
+				<legend>Seed</legend>
 				<input type="number" id="seed">
-				<div class="button-wrap">
-					<button id="new">New</button>
+				<div class="input-related">
+					<input type="checkbox" id="change" checked>
+					<label for="change">Change</label>
 				</div>
-			</div>
-			<div>
-				<label for="size">Size</label>
+			</fieldset>
+			<fieldset>
+				<legend>Size</legend>
 				<select id="size"></select>
-				<div class="button-wrap">
+				<div class="input-related">
 					<button id="next">Next</button>
 				</div>
-			</div>
-			<div>
-				<label for="roughness">Roughness</label>
+			</fieldset>
+			<fieldset>
+				<legend>Roughness</legend>
 				<input type="number" id="roughness" value="0.5" min="0" step="0.1">
-			</div>
-			<div>
-				<label for="tile-size">Tile Size</label>
+			</fieldset>
+			<fieldset>
+				<legend>Tile Size</legend>
 				<input type="number" id="tile-size" value="4" min="0">
-			</div>
-			<div class="button-wrap">
-				<button id="generate">Generate</button>
-			</div>
+			</fieldset>
+			<button id="generate">Generate</button>
 		</div>
 		<canvas id="heightmap"></canvas>
 		<script src="script/heightmap.js"></script>
 		<script>
 			const seedInput = document.getElementById("seed");
-			const newButton = document.getElementById("new");
+			const changeCheck = document.getElementById("change");
 			const sizeInput = document.getElementById("size");
 			const nextButton = document.getElementById("next");
 			const roughnessInput = document.getElementById("roughness");
 			const tileSizeInput = document.getElementById("tile-size");
 			const generateButton = document.getElementById("generate");
-
-			const newSeed = function() {
-				seedInput.value = Math.random().toString().substring(2);
-			};
 
 			const powersOfTwo = (function* () {
 				let n = 1;
@@ -61,6 +56,9 @@
 			};
 
 			const generate = function() {
+				if(changeCheck.checked)
+					seedInput.value = Math.random().toString().substring(2);
+
 				Heightmap.draw("heightmap", Heightmap.create(sizeInput.value, roughnessInput.value, seedInput.value), tileSizeInput.value);
 			};
 
@@ -69,12 +67,10 @@
 				addSize();
 
 			nextButton.addEventListener("click", addSize);
-			newButton.addEventListener("click", newSeed);
 			generateButton.addEventListener("click", generate);
 
 			sizeInput.childNodes[6].setAttribute("selected", true);
 
-			newSeed();
 			generate();
 		</script>
 	</body>
