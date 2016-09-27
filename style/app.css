@@ -36,6 +36,15 @@ input, select {
 	width: 100%;
 }
 
+input:hover, select:hover {
+	border-color: #b9b9b9;
+}
+
+input:focus, select:focus {
+	border-color: #528bff;
+	outline: none;
+}
+
 input[type="checkbox"] {
 	cursor: pointer;
 	margin: 0;
@@ -48,6 +57,17 @@ button {
 	border: 1px solid #c9c9c9;
 	cursor: pointer;
 	padding: 4px 6px;
+}
+
+button:hover {
+	background-color: #e0e0e0;
+	border-color: #b9b9b9;
+}
+
+button:focus {
+	background-color: #d9d9d9;
+	border-color: #528bff;
+	outline: none;
 }
 
 .input-related {
