@@ -4,34 +4,33 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Heightmap Generator</title>
+		<link rel="stylesheet" type="text/css" href="style/framework.css">
 		<link rel="stylesheet" type="text/css" href="style/app.css">
 	</head>
 	<body>
 		<div id="controls">
-			<fieldset>
-				<legend>Seed</legend>
-				<input type="number" id="seed">
-				<div class="input-related">
-					<input type="checkbox" id="change" checked>
+			<div class="form-field">
+				<label for="seed">Seed</label>
+				<input id="seed" type="number">
+				<div class="form-field check-field">
+					<input id="change" type="checkbox" checked>
 					<label for="change">Change</label>
 				</div>
-			</fieldset>
-			<fieldset>
-				<legend>Size</legend>
+			</div>
+			<div class="form-field">
+				<label for="size">Size</label>
 				<select id="size"></select>
-				<div class="input-related">
-					<button id="next">Next</button>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>Roughness</legend>
-				<input type="number" id="roughness" value="0.5" min="0" step="0.1">
-			</fieldset>
-			<fieldset>
-				<legend>Tile Size</legend>
-				<input type="number" id="tile-size" value="4" min="0">
-			</fieldset>
-			<button id="generate">Generate</button>
+				<button id="next">Next</button>
+			</div>
+			<div class="form-field">
+				<label for="roughness">Roughness</label>
+				<input  id="roughness" type="number" value="0.5" min="0" step=".1">
+			</div>
+			<div class="form-field">
+				<label for="tile-size">Tile Size</label>
+				<input id="tile-size" type="number" value="4" min="0">
+			</div>
+			<button class="main-button" id="generate">Generate</button>
 		</div>
 		<canvas id="heightmap"></canvas>
 		<script src="script/heightmap.js"></script>
