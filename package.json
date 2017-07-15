@@ -1,0 +1,18 @@
+{
+  "name": "heightmap-generator",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManOfJam/heightmap-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManOfJam/heightmap-generator/issues"
+  },
+  "homepage": "https://github.com/ManOfJam/heightmap-generator#readme"
+}

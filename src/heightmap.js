@@ -10,7 +10,7 @@ const Heightmap = {
 		return (this.random() - 0.5) * d;
 	},
 
-	normalise(n) {
+	clamp(n) {
 		return Math.min(1, Math.max(0, n));
 	},
 
@@ -46,7 +46,8 @@ const Heightmap = {
 					const b = map[y][x + frac];
 					const c = map[y + frac][x];
 					const d = map[y + frac][x + frac];
-					const e = map[y + (frac / 2)][x + (frac / 2)] = this.normalise(((a + b + c + d) / 4) + this.displace(range));
+
+					map[y + (frac / 2)][x + (frac / 2)] = this.clamp(((a + b + c + d) / 4) + this.displace(range));
 				}
 			}
 
@@ -58,10 +59,10 @@ const Heightmap = {
 					const d = map[y + frac][x + frac];
 					const e = map[y + (frac / 2)][x + (frac / 2)];
 
-					map[y][x + (frac / 2)] = this.normalise((y ? (map[y - (frac / 2)][x] + b + e + a) / 4  : (b + e + a) / 3) + this.displace(range));
-					map[y + (frac / 2)][x + frac] = this.normalise((x + frac < ubound ? (b + map[y + (frac / 2)][x + (frac * 1.5)] + d + e) / 4 : (b + d + e) / 3) + this.displace(range));
-					map[y + frac][x + (frac / 2)] = this.normalise((y + frac < ubound ? (e + d + map[y + (frac * 1.5)][x + (frac / 2)] + c) / 4 : (e + d + c) / 3) + this.displace(range));
-					map[y + (frac / 2)][x] = this.normalise((x ? (a + e + c + map[y + (frac / 2)][x - (frac / 2)]) / 4 : (a + e + c) / 3 ) + this.displace(range));
+					map[y][x + (frac / 2)] = this.clamp((y ? (map[y - (frac / 2)][x] + b + e + a) / 4  : (b + e + a) / 3) + this.displace(range));
+					map[y + (frac / 2)][x + frac] = this.clamp((x + frac < ubound ? (b + map[y + (frac / 2)][x + (frac * 1.5)] + d + e) / 4 : (b + d + e) / 3) + this.displace(range));
+					map[y + frac][x + (frac / 2)] = this.clamp((y + frac < ubound ? (e + d + map[y + (frac * 1.5)][x + (frac / 2)] + c) / 4 : (e + d + c) / 3) + this.displace(range));
+					map[y + (frac / 2)][x] = this.clamp((x ? (a + e + c + map[y + (frac / 2)][x - (frac / 2)]) / 4 : (a + e + c) / 3 ) + this.displace(range));
 				}
 			}
 
